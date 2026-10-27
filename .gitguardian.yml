@@ -1,0 +1,8 @@
+# ©AngelaMos | 2026
+# .gitguardian.yml
+
+version: 2
+
+ignore-paths:
+# Yo gitguardian I can handle it myself pls and thanks...
+  - PROJECTS/ 

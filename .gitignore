@@ -1,0 +1,21 @@
+# AngelaMos | 2026
+
+*.cache
+*.coverage
+.env
+.angelusvigil/
+.worktrees/
+.claude/
+DEMO-TRACKER.md
+
+/docs/
+/nadezhda.db
+
+# Python virtualenvs and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
