@@ -1,0 +1,16 @@
+{
+  "detected": true,
+  "severity": "high",
+  "explanation": "Tagged benign lab behaviors correlated; NOT a ransomware finding.",
+  "first_timestamp_utc": "2026-11-02T17:16:30.130510+00:00",
+  "event_ids": [
+    1,
+    11,
+    13
+  ],
+  "optional_run_key_observed": true,
+  "capture_types": [
+    "real_sysmon"
+  ],
+  "records_in_window": 6
+}

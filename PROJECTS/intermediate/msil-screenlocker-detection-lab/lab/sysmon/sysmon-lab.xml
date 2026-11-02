@@ -1,0 +1,21 @@
+<Sysmon schemaversion="4.82">
+  <HashAlgorithms>sha256</HashAlgorithms>
+  <EventFiltering>
+    <!-- Training only: marker-based collection, not production hardening. -->
+    <RuleGroup name="MSILBlockerLab-process" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <CommandLine condition="contains">MSILBlockerLab</CommandLine>
+      </ProcessCreate>
+    </RuleGroup>
+    <RuleGroup name="MSILBlockerLab-files" groupRelation="or">
+      <FileCreate onmatch="include">
+        <TargetFilename condition="contains">MSILBlockerLab</TargetFilename>
+      </FileCreate>
+    </RuleGroup>
+    <RuleGroup name="MSILBlockerLab-registry" groupRelation="or">
+      <RegistryEvent onmatch="include">
+        <TargetObject condition="contains">MSILBlockerLab</TargetObject>
+      </RegistryEvent>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>
