@@ -1,5 +1,16 @@
 # Evidence checklist for publication
 
+## Completed on GitHub-hosted Windows Server 2022 (2026-11-02)
+
+- [x] Windows-hosted run #41489476874 succeeded
+- [x] Microsoft-signed Sysmon64.exe downloaded and installed on disposable runner
+- [x] Real Sysmon EIDs 1, 11 and 13 observed (6 records total)
+- [x] Tagged benign Run-key test observed and cleaned up
+- [x] Python correlation succeeded against real Sysmon JSONL
+- [x] Sanitized real JSONL, detection JSON and provenance saved in evidence/public/
+- [x] Benign .NET WinForms application source compiled; GUI was not executed
+- [ ] Wazuh manager rules verified using real agent alerts
+
 - [x] Repo structure initialized on macOS
 - [x] Offline unit tests pass on connected Mac (7 tests)
 - [x] Correlator runs on labeled synthetic fixtures

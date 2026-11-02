@@ -1,15 +1,19 @@
-# LinkedIn post draft (update after VM validation)
+# LinkedIn post draft | Windows Sysmon Blue-Team Lab (verified)
 
-I am building a hands-on Windows security monitoring lab focused on .NET process telemetry and behavioral detection engineering.
+I built and validated a personal Windows security detection lab focused on **process, file, and registry telemetry**. 🛡️
 
-My current implementation includes:
-- A harmless Windows activity generator covering process, file and registry events.
-- Sysmon collection rules for Event IDs 1, 11 and 13.
-- A Python correlation engine and custom Wazuh rule definitions.
-- An offline test suite: **7/7 tests passed on my Intel Mac** using clearly labeled synthetic fixtures.
+The engineering workflow:
+• Generated safe Windows behavior with PowerShell.
+• Captured **6 genuine Sysmon events** on a GitHub-hosted Windows Server 2022 runner, including **Event IDs 1, 11, and 13**.
+• Used a Python correlation engine to detect the tagged event sequence within a 600-second window.
+• Built a small educational .NET application (source compiled successfully).
+• Prepared Wazuh custom detection rules and documented the investigation workflow.
 
-**Next validation milestone:** capture and investigate genuine Sysmon events in an isolated Windows VM, then verify Wazuh manager alerts and publish sanitized screenshots.
+**Evidence:** GitHub Actions run #41489476874 passed; the sanitized artifact and repeatable source code are linked in the repository.
 
-This is a personal Blue-Team engineering exercise, not analysis of a live ransomware infection or a confirmed malware sample.
+This is a **benign detection-engineering experiment**, not a ransomware infection or malware sample analysis. The Wazuh integration remains a separate validation milestone.
 
-#Cybersecurity #BlueTeam #Sysmon #Wazuh #WindowsSecurity #ThreatDetection #DetectionEngineering #Python
+🔗 Project: https://github.com/tahazitan/Cybersecurity-Projects/tree/lab/msil-screenlocker-detection/PROJECTS/intermediate/msil-screenlocker-detection-lab
+🔎 Verified Windows test: https://github.com/tahazitan/Cybersecurity-Projects/actions/runs/41489476874
+
+#Cybersecurity #DetectionEngineering #BlueTeam #Sysmon #WindowsSecurity #Wazuh #Python
