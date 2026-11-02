@@ -1,0 +1,39 @@
+name: MSIL Screen-Locker Lab - real Windows Sysmon
+on:
+  push:
+    branches: [lab/msil-screenlocker-detection]
+    paths:
+      - 'PROJECTS/intermediate/msil-screenlocker-detection-lab/**'
+      - '.github/workflows/msil-screenlocker-sysmon.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows-real-sysmon:
+    runs-on: windows-2022
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: PROJECTS/intermediate/msil-screenlocker-detection-lab
+    env:
+      RUNNER_ENVIRONMENT: github-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate Python offline unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Compile safe .NET WinForms educational demo
+        run: dotnet build lab/dotnet/MSILBlockerLab.Demo/MSILBlockerLab.Demo.csproj --configuration Release
+      - name: Collect genuine Sysmon records from benign Windows actions
+        shell: pwsh
+        run: .\lab\windows\Run-HostedWindowsCapture.ps1
+      - name: Upload sanitized Windows telemetry and correlation result
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-sysmon-sanitized
+          path: |
+            PROJECTS/intermediate/msil-screenlocker-detection-lab/evidence/local/windows-real-sysmon.jsonl
+            PROJECTS/intermediate/msil-screenlocker-detection-lab/evidence/local/windows-real-detection.json

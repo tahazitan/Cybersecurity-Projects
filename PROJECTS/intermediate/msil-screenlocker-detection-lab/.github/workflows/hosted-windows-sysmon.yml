@@ -1,0 +1,38 @@
+name: Real Sysmon Telemetry (Windows hosted runner)
+on:
+  push:
+    paths:
+      - 'lab/**'
+      - 'src/**'
+      - 'tests/**'
+      - '.github/workflows/hosted-windows-sysmon.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows-sysmon:
+    runs-on: windows-2022
+    timeout-minutes: 15
+    env:
+      RUNNER_ENVIRONMENT: github-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate offline correlator
+        run: python -m unittest discover -s tests -v
+      - name: Build harmless .NET training application (not executed)
+        run: dotnet build lab/dotnet/MSILBlockerLab.Demo/MSILBlockerLab.Demo.csproj --configuration Release
+      - name: Install official Sysmon, collect actual benign Windows events, analyze
+        shell: pwsh
+        run: .\lab\windows\Run-HostedWindowsCapture.ps1
+      - name: Attach sanitized real Windows evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-sysmon-sanitized
+          path: |
+            evidence/local/windows-real-sysmon.jsonl
+            evidence/local/windows-real-detection.json
+          retention-days: 7

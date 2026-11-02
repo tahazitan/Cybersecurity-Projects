@@ -1,0 +1,38 @@
+# Offline Validation Record
+
+Platform: macOS 15.8.1, x86_64, 16 GiB RAM
+Evidence type: locally executed Python unit tests, NOT real Windows/Sysmon telemetry
+Source: labeled synthetic fixtures
+
+Python 3.15.0
+
+test_bad_input_line (test_detection.DetectionTests.test_bad_input_line) ... ok
+test_fixture_detection (test_detection.DetectionTests.test_fixture_detection) ... ok
+test_incomplete_does_not_alert (test_detection.DetectionTests.test_incomplete_does_not_alert) ... ok
+test_large_time_gap_does_not_alert (test_detection.DetectionTests.test_large_time_gap_does_not_alert) ... ok
+test_no_matching_marker (test_detection.DetectionTests.test_no_matching_marker) ... ok
+test_run_key_escalation (test_detection.DetectionTests.test_run_key_escalation) ... ok
+test_xml_well_formed (test_detection.DetectionTests.test_xml_well_formed) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.008s
+
+OK
+
+=== Fixture correlation ===
+{
+  "detected": true,
+  "severity": "medium",
+  "explanation": "Tagged benign lab behaviors correlated; NOT a ransomware finding.",
+  "first_timestamp_utc": "2026-11-02T15:00:00+00:00",
+  "event_ids": [
+    1,
+    11,
+    13
+  ],
+  "optional_run_key_observed": false,
+  "capture_types": [
+    "synthetic_fixture"
+  ],
+  "records_in_window": 3
+}

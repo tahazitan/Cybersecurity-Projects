@@ -1,0 +1,3 @@
+{"timestamp_utc":"2026-11-02T15:00:00+00:00","event_id":1,"kind":"process","target":"cmd.exe","marker":"MSILBlockerLab","source":"Sysmon/Operational","capture_type":"synthetic_fixture","record_id":1}
+{"timestamp_utc":"2026-11-02T15:00:04+00:00","event_id":11,"kind":"file","target":"LAB_ARTIFACT\\MSILBlockerLab-demo-artifact.txt","marker":"MSILBlockerLab","source":"Sysmon/Operational","capture_type":"synthetic_fixture","record_id":2}
+{"timestamp_utc":"2026-11-02T15:00:07+00:00","event_id":13,"kind":"registry","target":"HKCU\\Software\\MSILBlockerLab\\MSILBlockerLab-ScenarioTag","marker":"MSILBlockerLab","source":"Sysmon/Operational","capture_type":"synthetic_fixture","record_id":3}
